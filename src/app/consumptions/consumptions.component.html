@@ -1,0 +1,79 @@
+<mat-card class="consumptions-card">
+  <mat-card-header>
+    <mat-card-title>Select Date and View Plates</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <div [formGroup]="dateForm" class="date-selector">
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Select date</mat-label>
+        <input matInput [matDatepicker]="checkinPicker" formControlName="daySelector">
+        <mat-hint>YYYY/MM/DD</mat-hint>
+        <mat-datepicker-toggle matIconSuffix [for]="checkinPicker"></mat-datepicker-toggle>
+        <mat-datepicker #checkinPicker></mat-datepicker>
+      </mat-form-field>
+    </div>
+
+    <div class="mat-elevation-z8 plates-table">
+      <table mat-table [dataSource]="filteredPlates" class="full-width-table">
+        <!-- Foods Column -->
+        <ng-container matColumnDef="foods">
+          <th mat-header-cell *matHeaderCellDef> Foods </th>
+          <td mat-cell *matCellDef="let plate">
+            <mat-chip-list>
+              <mat-chip *ngFor="let food of plate.foodsArray">{{food}}</mat-chip>
+            </mat-chip-list>
+          </td>
+        </ng-container>
+
+        <!-- Served At Column -->
+        <ng-container matColumnDef="served_at">
+          <th mat-header-cell *matHeaderCellDef> Served At </th>
+          <td mat-cell *matCellDef="let plate"> {{plate.served_at | date: 'yyyy/MM/dd'}} </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+    </div>
+  </mat-card-content>
+</mat-card>
+
+
+
+
+<div>
+  <mat-accordion class="example-headers-align" multi>
+    <h1>History</h1>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title> See all </mat-panel-title>
+        <mat-icon>library_books</mat-icon>
+      </mat-expansion-panel-header>
+
+
+<div class="mat-elevation-z8">
+  <table mat-table [dataSource]="plates" class="full-width-table">
+    <!-- Foods Column -->
+    <ng-container matColumnDef="foods">
+      <th mat-header-cell *matHeaderCellDef> Foods </th>
+      <td mat-cell *matCellDef="let plate">
+        <mat-chip-list>
+          <mat-chip *ngFor="let food of plate.foodsArray">{{food}}</mat-chip>
+        </mat-chip-list>
+      </td>
+    </ng-container>
+
+    <!-- Served At Column -->
+    <ng-container matColumnDef="served_at">
+      <th mat-header-cell *matHeaderCellDef> Served At </th>
+      <td mat-cell *matCellDef="let plate"> {{plate.served_at | date: 'yyyy/MM/dd'}} </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+</div>
+
+</mat-expansion-panel>
+</mat-accordion>
+</div>

@@ -1,0 +1,22 @@
+<hr>
+<h1>Your plate</h1>
+
+<form>
+  <mat-form-field class="example-chip-list">
+    
+    <mat-chip-list aria-label="Food selection">
+      <mat-chip *ngFor="let food of servingFoods" (removed)="remove(food)">
+        {{food.name}}
+        <button matChipRemove [attr.aria-label]="'remove ' + food.name">
+          <mat-icon>cancel</mat-icon>
+        </button>
+      </mat-chip>
+    </mat-chip-list>
+  </mat-form-field>
+  <br>
+  <button class="savePlate" type="submit" [disabled]="servingFoods.length==0" mat-stroked-button (click)="savePlate()">Save plate</button>
+</form>
+
+<hr>
+
+

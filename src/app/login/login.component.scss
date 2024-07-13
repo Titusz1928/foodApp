@@ -1,0 +1,57 @@
+@import '../../variables';
+
+.example-card {
+  max-width: 1200px;
+  margin: 0 auto;
+  border: 5px solid $main-color;
+  margin-bottom: 20px;
+
+  mat-card-header {
+    display: flex;
+    align-items: center;
+  }
+
+  .icon {
+    font-size: 30px;
+    margin-right: 10px; /* Add a small margin between icon and text */
+  }
+
+  .mat-card-title {
+    font-size: 25px;
+  }
+
+  .mat-card-subtitle {
+    font-size: 20px;
+  }
+
+  .main-image {
+    background-color: $main-color;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    border: 10px solid rgba(248, 247, 247, 0.9);
+    cursor: pointer;
+
+    img {
+      max-width: 50%;
+      height: auto;
+    }
+  }
+
+  .mat-card-content {
+    width: 100%; /* Adjusted to full width for mobile responsiveness */
+    text-align: center;
+  }
+
+  .message-help {
+    margin: 0 auto;
+    font-size: 18px;
+  }
+}
+
+.info-card {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around; /* Ensures cards are evenly spaced */
+}

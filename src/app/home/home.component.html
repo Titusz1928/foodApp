@@ -1,0 +1,48 @@
+
+<mat-card class="example-card" appearance="outlined">
+    <mat-card-header>
+      <mat-icon class="icon" aria-hidden="false" aria-label="Info" *ngIf="!todayPlateExists">add_box</mat-icon>
+      <mat-icon class="icon" aria-hidden="false" aria-label="Info" *ngIf="todayPlateExists">check</mat-icon>
+      <mat-card-title>Welcome</mat-card-title>
+      <mat-card-subtitle>{{currentDate | date:"medium"}}</mat-card-subtitle>
+    </mat-card-header>
+    <hr>
+    <div class="main-image" (click)="goToFoods()">
+      <mat-card-content>
+        <p class="message-help" *ngIf="!todayPlateExists">{{ no_plate_message }}</p>
+        <p class="message-help" *ngIf="todayPlateExists">{{ yes_plate_message }}</p>
+      </mat-card-content>
+    </div>
+  </mat-card>
+
+
+  <mat-card class="example-card" appearance="outlined">
+    <mat-card-header>
+      <mat-card-title>Recommandations</mat-card-title>
+      <mat-card-subtitle>Infos</mat-card-subtitle>
+    </mat-card-header>
+    <hr>
+  
+    <div>
+    <mat-card class="info-card" appearance="outlined">
+      <!-- Displaying project cards as before -->
+      <ng-container *ngFor="let info of infoList.slice(0, 3)">
+        <mat-card class="single-project-card">
+          <mat-card-header>
+            <mat-card-title>{{ info.title }}</mat-card-title>
+          </mat-card-header>
+          <img class="project-card-image" [src]="info.image" alt="Project Image">
+          <mat-card-content>
+            <br>
+            <p class="description">{{ info.description }}</p>
+            <mat-chip-list>
+              <mat-chip *ngFor="let tag of info.foods" [selectable]="false">
+                {{ tag }}
+              </mat-chip>
+            </mat-chip-list>
+          </mat-card-content>
+        </mat-card>
+      </ng-container>
+    </mat-card>
+    </div>
+    <br>

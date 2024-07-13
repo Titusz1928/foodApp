@@ -1,0 +1,15 @@
+@import '../../variables';
+
+.mat-table {
+    width: 100%;
+  }
+  
+  /* Remove padding from the table cells for a cleaner look */
+  .mat-cell, .mat-header-cell {
+    padding: 2px 2px; /* Adjust as needed */
+  }
+  
+  /* Optional: Add a margin to the table if needed */
+  .table-container {
+    margin-top: 16px; /* Adjust as needed */
+  }

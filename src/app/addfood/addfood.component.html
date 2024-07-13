@@ -1,0 +1,71 @@
+<div>
+  <mat-accordion class="example-headers-align" multi>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title> Create plate </mat-panel-title>
+        <mat-icon>fastfood</mat-icon>
+      </mat-expansion-panel-header>
+
+      <form [formGroup]="addNewFoodForm" name="contact" netlify>
+        <mat-form-field class="example-full-width">
+          <mat-label>Food</mat-label>
+          <input matInput name="food" formControlName="food" [(ngModel)]="newFood" (ngModelChange)="onFoodInputChange($event)" required>
+        </mat-form-field>
+
+        <table class="table" *ngIf="!addNewFoodForm.pristine && newFood!=''" class="mat-elevation-z1">
+          <tbody>
+            <tr *ngFor="let food of filteredFoods | slice:0:3" (click)="onRowClick(food)">
+              <td>{{ food.name }}</td>
+              <td><mat-icon>add</mat-icon></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <p>
+          <button class="btn btn-primary" type="submit" [disabled]="addNewFoodForm.invalid" mat-stroked-button (click)="addToTable()">Add new food type</button>
+        </p>
+      </form>
+    </mat-expansion-panel>
+  </mat-accordion>
+</div>
+<br>
+<router-outlet></router-outlet>
+<br>
+<div>
+  <mat-accordion class="example-headers-align" multi>
+    <h1>Recipe Book</h1>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title> See all your added foods </mat-panel-title>
+        <mat-icon>library_books</mat-icon>
+      </mat-expansion-panel-header>
+
+      <div class="table-container">
+        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+          <!-- Name Column -->
+          <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef> Name </th>
+            <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+          </ng-container>
+      
+          <!-- Total Consumptions Column -->
+          <ng-container matColumnDef="total_consumptions">
+            <th mat-header-cell *matHeaderCellDef> Total Consumptions </th>
+            <td mat-cell *matCellDef="let element"> {{element.total_consumptions}} </td>
+          </ng-container>
+      
+          <!-- Last Consumption Column -->
+          <ng-container matColumnDef="last_consumption">
+            <th mat-header-cell *matHeaderCellDef> Last Consumption </th>
+            <td mat-cell *matCellDef="let element"> {{element.last_consumption | date: 'yyyy/MM/dd'}} </td>
+          </ng-container>
+        
+          <!-- Header row -->
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <!-- Data rows -->
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+      </div>
+    </mat-expansion-panel>
+  </mat-accordion>
+</div>

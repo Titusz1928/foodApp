@@ -1,0 +1,19 @@
+<mat-card class="example-card" appearance="outlined">
+    <mat-card-header>
+      <mat-card-title>Welcome!</mat-card-title>
+      <mat-card-subtitle>Please enter the password to get access to the app, you only need to enter it now</mat-card-subtitle>
+    </mat-card-header>
+    <hr>
+    <div class="main-image">
+      <mat-card-content>
+        <form (ngSubmit)="onSubmit()">
+          <mat-form-field>
+            <mat-label>Password</mat-label>
+            <input matInput [(ngModel)]="password" name="password" type="password" required>
+          </mat-form-field>
+          <button mat-raised-button color="white" type="submit">Submit</button>
+        </form>
+      </mat-card-content>
+    </div>
+  </mat-card>
+  

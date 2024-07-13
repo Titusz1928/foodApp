@@ -1,0 +1,28 @@
+@import '../../variables';
+
+.sidenav-container {
+  height: 100%;
+}
+
+.sidenav {
+  width: 200px;
+}
+
+.sidenav .mat-toolbar {
+  background: $main-color;
+  display: flex; /* Enable flexbox */
+  justify-content: space-between; /* Space items evenly with logo on the right */
+  align-items: center; /* Center items vertically */
+}
+
+.mat-toolbar.mat-primary {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+.logo-image {
+  width: 30px; /* Adjust the width as needed */
+  height: auto;
+  margin-left: auto; /* Push the logo to the right */
+}

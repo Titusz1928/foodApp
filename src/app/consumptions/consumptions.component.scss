@@ -1,0 +1,45 @@
+@import '../../variables';
+
+:host {
+  display: block;
+  width: 100%;
+  padding: 16px;
+}
+
+.consumptions-card {
+  margin: 16px;
+  padding: 16px;
+}
+
+.mat-elevation-z8 {
+  width: 100%;
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+}
+
+mat-chip-list {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+mat-chip {
+  margin: 2px;
+  background-color:$main-color;
+}
+
+.mat-row {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+}
+
+@media (max-width: 600px) {
+  .mat-row {
+    padding: 16px 8px;
+    margin-bottom: 8px;
+  }
+  .mat-cell {
+    padding: 8px;
+  }
+}
