@@ -9,10 +9,18 @@
       <form [formGroup]="addNewFoodForm" name="contact" netlify>
         <mat-form-field class="example-full-width">
           <mat-label>Food</mat-label>
-          <input matInput name="food" formControlName="food" [(ngModel)]="newFood" (ngModelChange)="onFoodInputChange($event)" required>
+          <input 
+            matInput 
+            name="food" 
+            formControlName="food" 
+            [(ngModel)]="newFood" 
+            (ngModelChange)="onFoodInputChange($event)" 
+            required>
         </mat-form-field>
 
-        <table class="table" *ngIf="!addNewFoodForm.pristine && newFood!=''" class="mat-elevation-z1">
+        <table 
+          class="table mat-elevation-z1" 
+          *ngIf="!addNewFoodForm.pristine && newFood!=''">
           <tbody>
             <tr *ngFor="let food of filteredFoods | slice:0:3" (click)="onRowClick(food)">
               <td>{{ food.name }}</td>
@@ -22,7 +30,13 @@
         </table>
 
         <p>
-          <button class="btn btn-primary" type="submit" [disabled]="addNewFoodForm.invalid" mat-stroked-button (click)="addToTable()">Add new food type</button>
+          <button 
+            class="btn btn-primary" 
+            type="submit" 
+            [disabled]="addNewFoodForm.invalid" 
+            mat-stroked-button 
+            (click)="addToTable()">Add new food type
+          </button>
         </p>
       </form>
     </mat-expansion-panel>
@@ -39,6 +53,16 @@
         <mat-panel-title> See all your added foods </mat-panel-title>
         <mat-icon>library_books</mat-icon>
       </mat-expansion-panel-header>
+
+      <h4>Sort foods</h4>
+      <mat-form-field>
+        <mat-label>Choose an option</mat-label>
+        <mat-select [(ngModel)]="sortByOption" (ngModelChange)="sortFoods()">
+          <mat-option value="option0">Newest made</mat-option>
+          <mat-option value="option1">By name</mat-option>
+          <mat-option value="option2">Oldest made</mat-option>
+        </mat-select>
+      </mat-form-field>
 
       <div class="table-container">
         <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">

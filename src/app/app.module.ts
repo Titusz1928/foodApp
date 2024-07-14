@@ -31,6 +31,7 @@ import {MatDialogModule} from '@angular/material/dialog';
 import { LoginComponent } from './login/login.component';
 import { CreditsComponent } from './credits/credits.component';
 import { NotfoundComponent } from './notfound/notfound.component';
+import {MatSelectModule} from '@angular/material/select';
 
 @NgModule({
   declarations: [
@@ -67,6 +68,7 @@ import { NotfoundComponent } from './notfound/notfound.component';
     MatNativeDateModule,
     MatCardModule,
     MatDialogModule,
+    MatSelectModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

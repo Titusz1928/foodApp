@@ -90,7 +90,7 @@ export class HomeComponent implements OnInit {
 
   async fetchOldestFoods() {
     try {
-      const oldestFoods = await this.supabaseService.getOldestFoods(3); // Fetch 3 oldest foods
+      const oldestFoods = await this.supabaseService.getOldestFoods(5); // Fetch 3 oldest foods
       if (oldestFoods.length > 0) {
         // Populate the first item in infoList with oldest foods
         console.log(oldestFoods);
@@ -103,7 +103,7 @@ export class HomeComponent implements OnInit {
 
   async fetchFavouriteFoods() {
     try {
-      const favouriteFoods = await this.supabaseService.getTopConsumptionFoods(3); // Fetch 3 oldest foods
+      const favouriteFoods = await this.supabaseService.getTopConsumptionFoods(5); // Fetch 3 oldest foods
       if (favouriteFoods.length > 0) {
         // Populate the first item in infoList with oldest foods
         console.log(favouriteFoods);
@@ -131,7 +131,7 @@ export class HomeComponent implements OnInit {
     console.log("foodScores:",this.foodScores);
 
     // Take top 3 foods by score
-    const topScoredFoods = this.foodScores.slice(0, 3);
+    const topScoredFoods = this.foodScores.slice(0, 5);
 
     // Map top scored foods to infoList[2].foods
     console.log(topScoredFoods);
@@ -150,9 +150,6 @@ export class HomeComponent implements OnInit {
     const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24)); // Convert milliseconds to days
     return diffDays;
   }
-
-
-
 
 
   
