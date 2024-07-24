@@ -56,11 +56,12 @@ export class HomeComponent implements OnInit {
   
   async loadFoods() {
     try {
-      const foods = await this.supabaseService.getFoods();
-      console.log('Component foods:', foods);  // Verify if the data is being fetched
+      // const foods = await this.supabaseService.getFoods();
+      const foods = await this.supabaseService.getNotBlockedFoods();
+      // console.log('Component foods:', foods);  // Verify if the data is being fetched
   
       // Ensure last_consumption is parsed as Date
-      this.allFoods = foods.map(food => ({
+      this.allFoods = foods.map((food: { name: string, total_consumptions: number, last_consumption: string | number | Date; }) => ({
         ...food,
         last_consumption: new Date(food.last_consumption) // Parse string to Date
       }));
@@ -70,6 +71,7 @@ export class HomeComponent implements OnInit {
       console.error('Error loading foods:', error);
     }
   }
+  
 
 
   async checkIfTodayPlateExists() {
@@ -90,10 +92,10 @@ export class HomeComponent implements OnInit {
 
   async fetchOldestFoods() {
     try {
-      const oldestFoods = await this.supabaseService.getOldestFoods(5); // Fetch 3 oldest foods
+      const oldestFoods = await this.supabaseService.getOldestFoods(5); // Fetch 5 oldest foods
       if (oldestFoods.length > 0) {
         // Populate the first item in infoList with oldest foods
-        console.log(oldestFoods);
+        console.log("oldest foods: ",oldestFoods);
         this.infoList[0].foods = oldestFoods.map(food => food.name);
       }
     } catch (error) {
@@ -103,10 +105,10 @@ export class HomeComponent implements OnInit {
 
   async fetchFavouriteFoods() {
     try {
-      const favouriteFoods = await this.supabaseService.getTopConsumptionFoods(5); // Fetch 3 oldest foods
+      const favouriteFoods = await this.supabaseService.getTopConsumptionFoods(5); // Fetch 5 oldest foods
       if (favouriteFoods.length > 0) {
         // Populate the first item in infoList with oldest foods
-        console.log(favouriteFoods);
+        //console.log(favouriteFoods);
         this.infoList[1].foods = favouriteFoods.map(food => food.name);
       }
     } catch (error) {
@@ -134,13 +136,13 @@ export class HomeComponent implements OnInit {
     const topScoredFoods = this.foodScores.slice(0, 5);
 
     // Map top scored foods to infoList[2].foods
-    console.log(topScoredFoods);
+    //console.log(topScoredFoods);
     this.infoList[2].foods = topScoredFoods.map(food => food.foodName);
   }
 
   calculateScore(food: Food): number {
     const daysSinceLastConsumption = this.calculateDaysSinceLastConsumption(food.last_consumption);
-    return food.total_consumptions + (2 * daysSinceLastConsumption);
+    return (food.total_consumptions*3) + daysSinceLastConsumption;
   }
 
   calculateDaysSinceLastConsumption(lastConsumptionDate: Date): number {

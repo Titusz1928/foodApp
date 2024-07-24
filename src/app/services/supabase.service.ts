@@ -51,6 +51,19 @@ export class SupabaseService {
     return data;
   }
 
+  async getNotBlockedFoods() {
+    const { data, error } = await this.supabase
+      .from('Foods')
+      .select('*')
+      .or('blocked.is.false,blocked.is.null');
+    if (error) {
+      console.error('Error fetching foods:', error);
+      throw new Error(error.message);
+    }
+    console.log('Fetched foods:', data);  // Log the fetched data
+    return data;
+  }
+
   async createFood(food: Food): Promise<Food | null> {
     try {
       const { data, error } = await this.supabase
@@ -208,16 +221,18 @@ export class SupabaseService {
     const { data, error } = await this.supabase
       .from('Foods')
       .select('name')
+      .or('blocked.is.false,blocked.is.null')
       .order('last_consumption')
       .limit(limit);
-
+  
     if (error) {
       console.error('Error fetching oldest foods:', error.message);
       throw error;
     }
-
+  
     return data || [];
   }
+  
 
   async getTopConsumptionFoods(limit: number): Promise<{ name: string }[]> {
     // Implement method to get oldest foods from Supabase
@@ -225,6 +240,7 @@ export class SupabaseService {
     const { data, error } = await this.supabase
       .from('Foods')
       .select('name')
+      .or('blocked.is.false,blocked.is.null')
       .order('total_consumptions', { ascending: false })
       .limit(limit);
 
