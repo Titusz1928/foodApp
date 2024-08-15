@@ -142,7 +142,8 @@ export class HomeComponent implements OnInit {
 
   calculateScore(food: Food): number {
     const daysSinceLastConsumption = this.calculateDaysSinceLastConsumption(food.last_consumption);
-    return (food.total_consumptions*3) + daysSinceLastConsumption;
+    const randomFactor = Math.floor(Math.random() * 10); // Generate a random number between 0 and 9
+    return (food.total_consumptions * 3) + daysSinceLastConsumption + (randomFactor*3);
   }
 
   calculateDaysSinceLastConsumption(lastConsumptionDate: Date): number {

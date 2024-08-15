@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
   password: string = '';
-  readonly correctPassword: string = 'CHNANGE THIS';
+  readonly correctPassword: string = 'CHANGETHIS';
 
   constructor(private router: Router) { }
 

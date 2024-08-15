@@ -155,18 +155,19 @@ export class SupabaseService {
     }
   }
 
-  // New function to fetch Plates data
-  async getPlates() {
+  async getPlates(limit: number, offset: number) {
     try {
       const { data, error } = await this.supabase
         .from('Plates')
-        .select('*');
-
+        .select('*')
+        .order('served_at', { ascending: false }) // Ensure sorting
+        .range(offset, offset + limit - 1); // Fetch records in the range (offset, offset + limit - 1)
+  
       if (error) {
         console.error('Error fetching plates:', error);
         throw new Error(error.message);
       }
-
+  
       return data;
     } catch (error) {
       console.error('Error fetching plates:', error);
@@ -181,7 +182,6 @@ export class SupabaseService {
         .select('name')
         .eq('food_id', foodId)
         .single();
-
       if (error) {
         console.error('Error fetching food name:', error);
         throw new Error(error.message);
