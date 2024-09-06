@@ -10,7 +10,7 @@ export class SupabaseService {
   private itemReturend:boolean=false;
 
   constructor() {
-    this.supabase = createClient('CHANGE THIS', 'CHANGE THIS');
+    this.supabase = createClient('', '');
   }
 
 
@@ -251,6 +251,35 @@ export class SupabaseService {
 
     return data || [];
   }
+
+  //FOR SEARCHING PLATE WITH SPECOFOC DATE IN PLATES COMPONENT
+  async getPlatesByDate(date: Date): Promise<any[]> {
+    try {
+      const startDate = new Date(date);
+      startDate.setHours(0, 0, 0, 0); // Start of the day
+  
+      const endDate = new Date(date);
+      endDate.setHours(23, 59, 59, 999); // End of the day
+  
+      const { data, error } = await this.supabase
+        .from('Plates')
+        .select('*')
+        .gte('served_at', startDate.toISOString())
+        .lte('served_at', endDate.toISOString())
+        .order('served_at', { ascending: false });
+  
+      if (error) {
+        console.error('Error fetching plates by date:', error);
+        throw new Error(error.message);
+      }
+  
+      return data;
+    } catch (error) {
+      console.error('Error fetching plates by date:', error);
+      throw new Error('Failed to fetch plates by date.');
+    }
+  }
+  
 
 
 }

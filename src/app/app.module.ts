@@ -32,6 +32,8 @@ import { LoginComponent } from './login/login.component';
 import { CreditsComponent } from './credits/credits.component';
 import { NotfoundComponent } from './notfound/notfound.component';
 import {MatSelectModule} from '@angular/material/select';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { InfodialogComponent } from './app-nav/infodialog/infodialog.component';
 
 @NgModule({
   declarations: [
@@ -44,6 +46,7 @@ import {MatSelectModule} from '@angular/material/select';
     LoginComponent,
     CreditsComponent,
     NotfoundComponent,
+    InfodialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -69,6 +72,7 @@ import {MatSelectModule} from '@angular/material/select';
     MatCardModule,
     MatDialogModule,
     MatSelectModule,
+    MatProgressSpinnerModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

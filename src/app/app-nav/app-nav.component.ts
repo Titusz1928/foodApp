@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
+import { MatDialog } from '@angular/material/dialog';
+import { InfodialogComponent } from './infodialog/infodialog.component';
 
 @Component({
   selector: 'flapp-app-nav',
@@ -16,6 +18,14 @@ export class AppNavComponent {
       shareReplay()
     );
 
-  constructor(private breakpointObserver: BreakpointObserver) {}
+  constructor(private dialog: MatDialog, private breakpointObserver: BreakpointObserver) {}
+
+  openInfoDialog(): void {
+    const dialogRef = this.dialog.open(InfodialogComponent);
+
+    dialogRef.afterClosed().subscribe(() => {
+      console.log('The dialog was closed');
+    });
+  }
 
 }

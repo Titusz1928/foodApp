@@ -53,56 +53,55 @@
 .info-card {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-around; /* Ensures cards are evenly spaced */
+  justify-content: space-between; /* Ensure even spacing between cards */
 }
 
 .single-project-card {
-  width: calc(33.33% - 20px);
-  margin: 0 10px 20px 10px;
+  width: calc(33.33% - 20px); /* Adjust width calculation for spacing */
+  margin: 0 10px 20px; /* Margin for spacing between cards */
   box-sizing: border-box;
   max-width: 300px;
   border: 5px solid $main-color;
+  display: flex;
+  flex-direction: column; /* Ensure content is stacked vertically */
+  min-height: 400px; /* Set a minimum height for consistency */
+  /* Add padding for internal spacing */
+  padding: 10px;
+}
 
-  .project-card-image {
-    max-width: 100%;
-    max-height: 200px;
-    display: block;
-    margin: 0 auto;
-    padding: 10px;
-    object-fit: contain;
-  }
+.project-card-image {
+  max-width: 100%;
+  max-height: 300px;
+  display: block;
+  margin: 0 auto;
+  padding: 10px;
+  object-fit: contain;
+}
 
-  .mat-card-content {
-    text-align: left; /* Align text left for better readability */
-  }
+.mat-card-content {
+  flex: 1; /* Allow content to expand and fill space */
+  text-align: left; /* Align text left for better readability */
+}
 
-  .description {
-    margin-bottom: 10px; /* Added margin bottom for separation */
-    white-space: pre-wrap; /* Allow wrapping and respect line breaks */
-  }
+.description {
+  margin-bottom: 10px; /* Added margin bottom for separation */
+  text-align: left;
+  white-space: pre-wrap; /* Allow wrapping and respect line breaks */
+}
 
-  .mat-chip {
-    margin-right: 5px; /* Adjusted spacing between chips */
-    margin-bottom: 5px; /* Added margin bottom for separation */
-  }
+.mat-chip {
+  margin-right: 5px; /* Adjusted spacing between chips */
+  margin-bottom: 5px; /* Added margin bottom for separation */
 }
 
 @media (max-width: 768px) {
-  .example-card {
-    .main-image {
-      img {
-        max-width: 100%;
-      }
-    }
-  }
-
   .info-card {
     flex-direction: column; /* Stack cards vertically on smaller screens */
   }
 
   .single-project-card {
-    width: 100%;
-    margin: 0 0 20px 0;
-    max-width: unset;
+    width: 100%; /* Full width on smaller screens */
+    margin: 0 0 20px 0; /* Adjust margin for mobile */
+    max-width: unset; /* Remove max-width constraint */
   }
 }

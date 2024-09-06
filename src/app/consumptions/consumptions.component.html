@@ -70,6 +70,14 @@
         </table>
         <button mat-button (click)="loadMoreRows()">Load More</button>
       </div>
+
     </mat-expansion-panel>
   </mat-accordion>
+</div>
+
+<!-- Loading Spinner Overlay -->
+<div class="loading-overlay" *ngIf="isLoading">
+  <div class="uploader-status">
+  <mat-spinner color="yellow"></mat-spinner>
+    </div> 
 </div>

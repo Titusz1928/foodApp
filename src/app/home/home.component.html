@@ -23,9 +23,7 @@
     </mat-card-header>
     <hr>
   
-    <div>
-    <mat-card class="info-card" appearance="outlined">
-      <!-- Displaying project cards as before -->
+    <div class="info-card">
       <ng-container *ngFor="let info of infoList.slice(0, 3)">
         <mat-card class="single-project-card">
           <mat-card-header>
@@ -33,7 +31,7 @@
           </mat-card-header>
           <img class="project-card-image" [src]="info.image" alt="Project Image">
           <mat-card-content>
-            <br>
+            <hr>
             <p class="description">{{ info.description }}</p>
             <mat-chip-list>
               <mat-chip *ngFor="let tag of info.foods" [selectable]="false">
@@ -43,6 +41,5 @@
           </mat-card-content>
         </mat-card>
       </ng-container>
-    </mat-card>
     </div>
     <br>

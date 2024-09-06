@@ -11,7 +11,7 @@
       <a mat-list-item routerLink="home">Home</a>
       <a mat-list-item routerLink="foods">Foods</a>
       <a mat-list-item routerLink="consumptions">Plates</a>
-      <a mat-list-item routerLink="credits">Credits</a>
+      <!-- <a mat-list-item routerLink="credits">Credits</a> -->
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
@@ -25,6 +25,8 @@
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
       <span>Food app</span>
+      <span class="spacer"></span>
+      <mat-icon (click)="openInfoDialog()" class="large-icon">info</mat-icon>
     </mat-toolbar>
     <!-- Add Content Here -->
     <router-outlet></router-outlet>

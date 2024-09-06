@@ -26,3 +26,20 @@
   height: auto;
   margin-left: auto; /* Push the logo to the right */
 }
+
+.mat-toolbar {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+/* The spacer takes up remaining space to push the icon to the right */
+.spacer {
+  flex: 1 1 auto;
+}
+
+.large-icon {
+  font-size: 28px; /* You can adjust the size as needed */
+  width: 28px;
+  height: 28px;
+}

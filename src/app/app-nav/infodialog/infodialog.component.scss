@@ -1,0 +1,56 @@
+.infocard {
+    background-color: #ecd60c; /* Bright yellow background */
+    border-radius: 8px; /* Rounded corners */
+    padding: 16px; /* Padding inside the card */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+    max-width: 400px; /* Maximum width of the card */
+    margin: 20px auto; /* Center the card horizontally and add margin */
+    text-align: center; /* Center align text */
+    display: flex; /* Enable flexbox */
+    flex-direction: column; /* Arrange items vertically */
+    align-items: center; /* Center items horizontally */
+  }
+  
+  .info-icon {
+    font-size: 48px; /* Larger icon size */
+    color: #000000; /* Icon color */
+    margin-bottom: 16px; /* Space between icon and title */
+  }
+  
+  h2 {
+    font-size: 24px; /* Larger font size for title */
+    margin: 16px 0; /* Margin above and below the title */
+    color: #333; /* Dark color for better readability */
+  }
+  
+  mat-dialog-content p {
+    font-size: 16px; /* Font size for paragraph */
+    color: #333; /* Dark color for better readability */
+    margin: 0 0 16px 0; /* Margin below the paragraph */
+  }
+  
+  mat-dialog-content a {
+    color: #000000; /* Link color */
+    text-decoration: none; /* Remove underline */
+  }
+  
+  mat-dialog-content a:hover {
+    text-decoration: underline; /* Underline on hover for better UX */
+  }
+  
+  mat-dialog-actions {
+    display: flex; /* Flexbox for alignment */
+    justify-content: center; /* Center the button */
+  }
+  
+  button.mat-button {
+    background-color: #000000; /* Button background color */
+    color: #ffffff; /* Button text color */
+    margin-top: 16px; /* Margin on top of the button */
+    margin-bottom: 10px;
+  }
+  
+  button.mat-button:hover {
+    background-color: #333; /* Darker color on hover */
+  }
+  
